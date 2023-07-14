@@ -20,9 +20,10 @@ if [[ -n "$HOMEASSISTANT_WEBHOOK_URL" ]]; then
     "$HOMEASSISTANT_WEBHOOK_URL"
 fi
 
+# TODO: add some configs here
 # remove existing init scripts
-rm -f "$HOME/.zshrc"
-rm -f "$HOME/.gitconfig"
+#rm -f "$HOME/.zshrc"
+#rm -f "$HOME/.gitconfig"
 
 packages_needed=(
   bat
