@@ -57,16 +57,7 @@ sudo chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 
 dotfiles=(
-  aliases.zsh
-  config/github-copilot
   config/nvim
-  gitconfig
-  gitconfig.codespaces
-  irbrc
-  tmux.conf
-  tmux.overmind.conf
-  zprofile
-  zshrc
 )
 for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
