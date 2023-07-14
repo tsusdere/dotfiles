@@ -1,2 +1,6 @@
 require("tsusdere.packer")
-require("tsusdere")
+
+if not vim.env.HEADLESS_NEOVIM then
+  require("tsusdere.remap")
+  require("tsusdere.set")
+end
