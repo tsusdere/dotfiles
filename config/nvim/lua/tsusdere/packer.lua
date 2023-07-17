@@ -39,9 +39,13 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
-	use('github/copilot.vim')
-	use('kyazdani42/nvim-web-devicons')
-	use('kyazdani42/nvim-tree.lua')
+  use('github/copilot.vim')
+	use {
+	  'nvim-tree/nvim-tree.lua',
+	  requires = {
+	    'nvim-tree/nvim-web-devicons', -- optional
+	  },
+	}
 
   use {
   'VonHeikemen/lsp-zero.nvim',
