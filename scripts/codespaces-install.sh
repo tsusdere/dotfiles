@@ -59,6 +59,7 @@ sudo mv nvim.appimage /usr/local/bin/nvim
 
 dotfiles=(
   config/nvim
+  tmux.conf
 )
 for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
