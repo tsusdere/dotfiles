@@ -33,12 +33,21 @@ return require('packer').startup(function(use)
 	end
   })
 
-	-- plugins
+  -- prettier
+  use('neovim/nvim-lspconfig')
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
+
+  -- plugins
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
   use('github/copilot.vim')
 	use {
 	  'nvim-tree/nvim-tree.lua',
