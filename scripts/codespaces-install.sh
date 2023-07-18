@@ -62,6 +62,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 dotfiles=(
   config/nvim
   tmux.conf
+  zshrc
 )
 for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
