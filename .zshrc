@@ -101,3 +101,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
 eval "$(starship init zsh)"
+
+# git
+alias ga="git add"
+alias gcm="git commit -m"
+alias gb="git branch"
+alias gnb="git checkout -b"
+alias gf="git fetch"
+alias gpl="git pull"
+alias gs="git status -s"
+alias gp="git push -u"
