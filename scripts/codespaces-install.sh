@@ -57,6 +57,9 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 sudo chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 
+## Install starship
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
+
 dotfiles=(
   config/nvim
   tmux.conf
