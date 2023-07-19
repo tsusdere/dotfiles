@@ -98,6 +98,7 @@ sudo mv rdm-linux-amd64 /usr/local/bin/rdm
 sudo chmod +x /usr/local/bin/rdm
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
+starship preset nerd-font-symbols -o ~/.config/starship.toml
 
 # send pushover notification that dotfiles setup has completed
 if [[ -n "$PUSHOVER_API_TOKEN" && -n "$PUSHOVER_USER_KEY" ]]; then
