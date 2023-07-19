@@ -62,6 +62,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 dotfiles=(
   config/nvim
   git/gitconfig
+  git/gitconfig.codespaces
   tmux.conf
   zshrc
 )
