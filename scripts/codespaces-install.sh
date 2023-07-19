@@ -22,7 +22,7 @@ fi
 
 # remove existing init scripts
 rm -f "$HOME/.zshrc"
-#rm -f "$HOME/.gitconfig"
+rm -f "$HOME/.gitconfig"
 
 packages_needed=(
   bat
@@ -61,6 +61,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 dotfiles=(
   config/nvim
+  git/gitconfig
   tmux.conf
   zshrc
 )
