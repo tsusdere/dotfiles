@@ -5,7 +5,9 @@ lsp.ensure_installed({
 	'tsserver',
 	'eslint',
 	'rust_analyzer',
-	'prettierd',
+	'htmlbeautifier',
+	'rubocop',
+	'rubyfmt',
 })
 
 local cmp = require('cmp')
