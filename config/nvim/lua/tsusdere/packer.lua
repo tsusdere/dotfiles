@@ -25,6 +25,10 @@ return require('packer').startup(function(use)
   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+-- Airline
+use('vim-airline/vim-airline')
+use('vim-airline/vim-airline-themes')
+
 -- Themes
  use { "catppuccin/nvim", as = "catppuccin" }
   use({
