@@ -29,6 +29,12 @@ return require('packer').startup(function(use)
 use('vim-airline/vim-airline')
 use('vim-airline/vim-airline-themes')
 
+-- Orgmode
+use{'nvim-orgmode/orgmode', config= function()
+    require('orgmode').setup{}
+end
+}
+
 -- Themes
  use { "catppuccin/nvim", as = "catppuccin" }
   use({
