@@ -30,7 +30,6 @@ vim.opt.colorcolumn = "80"
 
 -- airline settings
 vim.g["airline_theme"] = 'catppuccin'
-vim.g["airline#extensions#tabline#enabled"] = 1
 vim.g["airline_powerline_fonts"] = 1
 
 -- set the max text width to 120
