@@ -81,8 +81,6 @@ npm_packages_needed=(
 )
 sudo /usr/local/bin/npm install -g "${npm_packages_needed[@]}"
 
-HEADLESS_NEOVIM=1 /usr/local/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
 # tmux new -d # open a detached session to install TPM
 # tmux new -d "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh" # open another detached session and install plugins
 
