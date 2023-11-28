@@ -20,10 +20,6 @@ if [[ -n "$HOMEASSISTANT_WEBHOOK_URL" ]]; then
     "$HOMEASSISTANT_WEBHOOK_URL"
 fi
 
-# remove existing init scripts
-rm -f "$HOME/.zshrc"
-rm -f "$HOME/.gitconfig"
-
 packages_needed=(
   bat
   exuberant-ctags
