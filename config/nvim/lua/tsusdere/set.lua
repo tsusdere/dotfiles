@@ -29,7 +29,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 -- airline settings
-vim.g["airline_theme"] = 'kanagawa'
+vim.g["airline_theme"] = 'gruvbox'
 
 -- set the max text width to 120
 vim.opt.textwidth = 120
