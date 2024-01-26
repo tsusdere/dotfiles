@@ -9,8 +9,6 @@ return {
       }
     end,
   },
-  { "shatur/neovim-ayu",
-    lazy = true
-  },
+  { "arturgoms/moonbow.nvim" },
   { "ellisonleao/gruvbox.nvim" },
 }
