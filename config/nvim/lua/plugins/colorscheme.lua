@@ -9,6 +9,7 @@ return {
       }
     end,
   },
+  { "ayu-theme/ayu-vim" },
   { "arturgoms/moonbow.nvim" },
   { "ellisonleao/gruvbox.nvim" },
 }
