@@ -86,7 +86,11 @@ return {
       position = "right",
     },
   },
-
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
   {
     "nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
