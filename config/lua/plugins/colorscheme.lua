@@ -17,6 +17,10 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
       transparent_background = true,
       integrations = {
         aerial = true,
