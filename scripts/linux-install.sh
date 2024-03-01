@@ -59,9 +59,6 @@ for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
 done
 
-sudo gem install neovim
-pip3 install --user neovim
-
 npm_packages_needed=(
   bash-language-server
   eslint
