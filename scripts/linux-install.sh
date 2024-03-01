@@ -20,10 +20,6 @@ if [[ -n "$HOMEASSISTANT_WEBHOOK_URL" ]]; then
     "$HOMEASSISTANT_WEBHOOK_URL"
 fi
 
-# remove existing init scripts
-rm -f "$HOME/.zshrc"
-rm -f "$HOME/.gitconfig"
-
 packages_needed=(
   bat
   exuberant-ctags
@@ -54,13 +50,8 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 sudo chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/local/bin/nvim
 
-## Install starship
-curl -sS https://starship.rs/install.sh | sh -s -- --yes
-
 dotfiles=(
   config/nvim
-  git/gitconfig
-  git/gitconfig.codespaces
   tmux.conf
   zshrc
 )
@@ -68,7 +59,7 @@ for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
 done
 
-sudo gem install neovim rubocop
+sudo gem install neovim
 pip3 install --user neovim
 
 npm_packages_needed=(
@@ -97,7 +88,6 @@ sudo mv rdm-linux-amd64 /usr/local/bin/rdm
 sudo chmod +x /usr/local/bin/rdm
 
 sudo chsh -s "$(which zsh)" "$(whoami)"
-starship preset nerd-font-symbols -o ~/.config/starship.toml
 
 # send pushover notification that dotfiles setup has completed
 if [[ -n "$PUSHOVER_API_TOKEN" && -n "$PUSHOVER_USER_KEY" ]]; then
