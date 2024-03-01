@@ -34,8 +34,6 @@ packages_needed=(
   kmod
   libfuse2
   pip
-  rubocop
-  ruby-dev
   shellcheck
   silversearcher-ag
   tmux
