@@ -9,9 +9,37 @@ return {
       }
     end,
   },
-  { "ayu-theme/ayu-vim" },
-  { "arturgoms/moonbow.nvim" },
-  { "ellisonleao/gruvbox.nvim" },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+  { "ayu-theme/ayu-vim", transparent_mode = true },
+  {
+    "arturgoms/moonbow.nvim",
+    opts = {
+      transparent_mode = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    opts = {
+      transparent_mode = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
   {
     "catppuccin/nvim",
     lazy = true,
