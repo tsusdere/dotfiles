@@ -57,7 +57,7 @@ keymap.set("n", "<C-e>", function()
   harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
-keymap.set("n", "<C-u>", function()
+keymap.set("n", "<C-i>", function()
   harpoon:list():select(1)
 end)
 keymap.set("n", "<C-j>", function()
