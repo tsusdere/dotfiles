@@ -20,7 +20,7 @@ return {
     },
   },
   { "ayu-theme/ayu-vim", transparent_mode = true },
-  { "aktersnurra/no-clown-fiesta", transparent = true },
+  { "aktersnurra/no-clown-fiesta.nvim", transparent = true },
   {
     "arturgoms/moonbow.nvim",
     opts = {
