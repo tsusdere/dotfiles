@@ -19,6 +19,7 @@ return {
       },
     },
   },
+  { "rebelot/kanagawa.nvim", transparent = true },
   { "ayu-theme/ayu-vim", transparent_mode = true },
   { "aktersnurra/no-clown-fiesta.nvim", transparent = true },
   {
