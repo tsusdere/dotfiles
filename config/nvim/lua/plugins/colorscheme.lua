@@ -21,12 +21,14 @@ return {
   },
   { "rose-pine/neovim",
     name = "rose-pine",
-    transparent = true,
-    styles = {
-      transparency = true,
-      sidebars = "transparent",
-      floats = "transparent",
-    },
+    opts = {
+      transparent = true,
+      styles = {
+        transparency = true,
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    }
   },
   { "rebelot/kanagawa.nvim", transparent = true },
   { "ayu-theme/ayu-vim", transparent_mode = true },
