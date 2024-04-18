@@ -19,7 +19,12 @@ return {
       },
     },
   },
-  { "rose-pine/neovim", name = "rose-pine", transparent = true },
+  { "rose-pine/neovim",
+    name = "rose-pine",
+    styles = {
+      transparency = true,
+    },
+  },
   { "rebelot/kanagawa.nvim", transparent = true },
   { "ayu-theme/ayu-vim", transparent_mode = true },
   { "aktersnurra/no-clown-fiesta.nvim", transparent = true },
