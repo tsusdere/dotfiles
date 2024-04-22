@@ -54,7 +54,3 @@ keymap.set("n", "<C-j>", ":m .+1<CR>==")
 keymap.set("n", "<Leader>pv", function()
   vim.cmd.Ex()
 end, opts)
-
-vim.keymap.set("n", "<C-;>", function()
-  toggle_telescope(harpoon:list())
-end, { desc = "Open harpoon window" })
