@@ -49,27 +49,6 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-k>", ":m .-2<CR>==")
 keymap.set("n", "<C-j>", ":m .+1<CR>==")
 
--- harpoon
-keymap.set("n", "<leader>h", function()
-  harpoon:list():append()
-end)
-keymap.set("n", "<leader>H", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
-
-keymap.set("n", "<C-1>", function()
-  harpoon:list():select(1)
-end)
-keymap.set("n", "<C-2>", function()
-  harpoon:list():select(2)
-end)
-keymap.set("n", "<C-3>", function()
-  harpoon:list():select(3)
-end)
-keymap.set("n", "<C-4>", function()
-  harpoon:list():select(4)
-end)
-
 -- Toggle previous & next buffers stored within Harpoon list
 keymap.set("n", "<C-S-P>", function()
   harpoon:list():prev()
@@ -77,7 +56,6 @@ end)
 keymap.set("n", "<C-S-N>", function()
   harpoon:list():next()
 end)
-
 
 -- Go to explorer
 keymap.set("n", "<Leader>pv", function()
