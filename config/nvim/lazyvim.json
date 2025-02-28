@@ -1,11 +1,14 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.copilot",
-    "lazyvim.plugins.extras.editor.harpoon2"
+    "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.inc-rename",
+    "lazyvim.plugins.extras.ui.dashboard-nvim",
+    "lazyvim.plugins.extras.util.dot"
   ],
+  "install_version": 8,
   "news": {
-    "NEWS.md": "4964",
-    "doc/news.txt": "24447"
+    "NEWS.md": "10960"
   },
-  "version": 5
+  "version": 8
 }

@@ -2,12 +2,12 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-local discipline = require("tsusdere.discipline")
-local harpoon = require("harpoon")
-discipline.cowboy()
-harpoon:setup()
 
 keymap.set("n", "x", '"_x')
 
@@ -48,14 +48,6 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 -- help move line
 keymap.set("n", "<C-k>", ":m .-2<CR>==")
 keymap.set("n", "<C-j>", ":m .+1<CR>==")
-
--- Toggle previous & next buffers stored within Harpoon list
-keymap.set("n", "<C-S-P>", function()
-  harpoon:list():prev()
-end)
-keymap.set("n", "<C-S-N>", function()
-  harpoon:list():next()
-end)
 
 -- Go to explorer
 keymap.set("n", "<Leader>pv", function()
