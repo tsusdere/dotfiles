@@ -49,6 +49,9 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-k>", ":m .-2<CR>==")
 keymap.set("n", "<C-j>", ":m .+1<CR>==")
 
+-- close window
+keymap.set("n", "<Leader>w", ":q", opts)
+
 -- Go to explorer
 keymap.set("n", "<Leader>pv", function()
   vim.cmd.Ex()
