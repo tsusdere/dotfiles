@@ -8,10 +8,27 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = false;
+  # depending on how you configured your disk mounts, change this to /boot or /boot/efi.
+  boot.loader.efi.efiSysMountPoint = "/boot";
+
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+
+  # supported file systems, so we can mount any removable disks with these filesystems
+  boot.supportedFilesystems = lib.mkForce [
+    "ext4"
+    "btrfs"
+    "xfs"
+    "ntfs"
+    "fat"
+    "vfat"
+    "exfat"
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/bef18c10-f04f-4f70-8cdc-2474b5be5e6c";
