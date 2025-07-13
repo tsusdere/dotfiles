@@ -12,7 +12,7 @@ with lib;
     rustc
     cargo
 
-
+    # git 
     gh
     gitbutler
     lazygit

@@ -5,7 +5,7 @@ with lib;
 {
 
   imports = [
-	../modules/dev/git.nix
+	../modules/dev/default.nix
   ];
 
   home.username = "tsusdere";
