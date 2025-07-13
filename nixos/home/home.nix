@@ -6,6 +6,7 @@ with lib;
 
   imports = [
 	../modules/dev/default.nix
+	../modules/pkgs/default.nix
   ];
 
   home.username = "tsusdere";
