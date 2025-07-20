@@ -31,8 +31,8 @@
       cursor-opacity = .8;
       shell-integration-features = "no-cursor";
 
-      window-decoration = false;
       term = "xterm-256color";
+      gtk-titlebar = false;
     };
   };
 }

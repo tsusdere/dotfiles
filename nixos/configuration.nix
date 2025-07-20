@@ -93,7 +93,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     neovim
      wget
      os-prober
      discord-ptb
@@ -106,7 +106,22 @@
      ntfs3g
      calibre
      lshw
+     fish
   ];
+
+  # Let's make fish the default shell
+  programs.fish = {
+   enable = true;
+
+   # Install Fisher plugin manager
+   interactiveShellInit = ''
+     if not functions -q fisher
+       curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+     end
+   '';
+  };
+
+  users.defaultUserShell = pkgs.fish;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
