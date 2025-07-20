@@ -2,6 +2,6 @@
   imports = [
 	./terminal/ghostty.nix
 	./git/git.nix
-	./tools/dev-tools.nix
+	./tools/default.nix
   ];
 }
