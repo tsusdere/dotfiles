@@ -19,8 +19,20 @@
     settings = {
       font-family = "Maple Mono NF CN";
       font-size = 13;
+      theme = "tokyonight";
+      selection-invert-fg-bg= true;
+      bold-is-bright = true;
+      minimum-contrast=2;
+      background-opacity = 0.92;
 
-      background-opacity = 0.93;
+      cursor-style = "block";
+      cursor-style-blink = true;
+      cursor-invert-fg-bg = true;
+      cursor-opacity = .8;
+      shell-integration-features = "no-cursor";
+
+      window-decoration = false;
+      term = "xterm-256color";
     };
   };
 }

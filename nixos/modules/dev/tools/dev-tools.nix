@@ -1,19 +1,73 @@
 { pkgs, ... }: {
-  home.packages = with.pkgs; [
-  	neofetch
+  home.packages = with pkgs;(
+	  [
+		neofetch
 
-	# java
-	visualvm
-	zulu17
+		# java
+		visualvm
+		zulu17
 
-	# rust
-	rustc
-	cargo
+		# python
+		python3
 
-	# go
-	go
+		#terraform
+		terraform-ls
+		jsonnet
+		jsonnet-language-server
+		taplo
+		yaml-language-server
+		actionlint
 
-	# python
-	python3
-  ];
+		#protobuff
+		buf
+	  ]
+	  ++
+	  # General Purpose
+	  [
+		#c/c++
+		cmake
+		cmake-language-server
+		gnumake
+		checkmake
+		gcc
+		gdb
+		clang-tools
+		lldb
+
+		# Rust
+		rustc
+		cargo
+		rust-analyzer
+		rustfmt
+		clippy
+
+		# Go
+		go
+		gomodifytags
+		iferr
+		impl
+		gotools
+		gopls
+		delve
+
+		# Zig
+		zls
+
+		# Lua
+		stylua
+		lua-language-server
+
+		# Bash
+		shellcheck
+		shfmt
+	  ]
+	  ++
+	  # Web stuff
+	  [
+		nodejs
+		typescript
+		typescript-language-server
+		emmet-ls
+	  ]
+  );
 }
