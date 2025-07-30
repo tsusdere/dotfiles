@@ -127,4 +127,15 @@ with lib;
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.05";
+
+    programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+    ];
+    commandLineArgs = [
+      "--disable-features=WebRtcAllowInputVolumeAdjustment"
+    ];
+  };
 }

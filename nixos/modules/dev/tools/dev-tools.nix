@@ -20,6 +20,11 @@
 
 		#protobuff
 		buf
+
+
+		openssl
+		pkg-config
+		
 	  ]
 	  ++
 	  # General Purpose
