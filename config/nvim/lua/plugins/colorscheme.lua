@@ -1,6 +1,7 @@
 return {
   { "ellisonleao/gruvbox.nvim", opts = {
     constrast = "hard",
+    transparent_mode = true,
   } },
   {
     "craftzdog/solarized-osaka.nvim",

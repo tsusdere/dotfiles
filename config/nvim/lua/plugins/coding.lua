@@ -41,7 +41,7 @@ return {
 
   -- Go forward/backward with square brackets
   {
-    "echasnovski/mini.bracketed",
+    "nvim-mini/mini.bracketed",
     event = "BufReadPost",
     config = function()
       local bracketed = require("mini.bracketed")
@@ -87,11 +87,11 @@ return {
     },
   },
   {
-  	"L3MON4D3/LuaSnip",
-  	-- follow latest release.
-  	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-  	-- install jsregexp (optional!).
-  	build = "make install_jsregexp"
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
   },
   {
     "nvim-cmp",
