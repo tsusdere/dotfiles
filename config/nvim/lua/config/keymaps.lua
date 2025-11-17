@@ -1,7 +1,6 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
----  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -62,12 +61,6 @@ vim.o.scrolloff = 10
 --  See `:help hlsearch`
 keymap.set("n", "<Leader>n", "<cmd>nohlsearch<CR>")
 
--- go to explorer
--- Go to explorer
-keymap.set("n", "<Leader>pv", function()
-	vim.cmd.Ex()
-end, opts)
-
 -- Diagnostic keymaps
 keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
@@ -92,7 +85,7 @@ keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit")
+keymap.set("n", "te", ":tabedit<Return>")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
@@ -116,4 +109,13 @@ keymap.set("n", "<C-k>", ":m .-2<CR>==")
 keymap.set("n", "<C-j>", ":m .+1<CR>==")
 
 -- close window
-keymap.set("n", "<Leader>w", ":q", opts)
+keymap.set("n", "<Leader>w", ":q<Return>", opts)
+
+-- Save file with Ctrl+s
+keymap.set("n", "<C-s>", ":w<CR>", opts)
+keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
+
+-- explorer
+keymap.set("n", "<leader>E", function()
+	Snacks.explorer({ cwd = vim.fn.getcwd() })
+end)
