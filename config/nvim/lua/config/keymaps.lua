@@ -110,6 +110,7 @@ keymap.set("n", "<C-j>", ":m .+1<CR>==")
 
 -- close window
 keymap.set("n", "<Leader>w", ":q<Return>", opts)
+keymap.set("n", "<Leader>x", ":x<Return>", opts)
 
 -- Save file with Ctrl+s
 keymap.set("n", "<C-s>", ":w<CR>", opts)
