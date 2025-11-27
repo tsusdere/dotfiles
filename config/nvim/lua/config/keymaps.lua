@@ -109,8 +109,12 @@ keymap.set("n", "<C-k>", ":m .-2<CR>==")
 keymap.set("n", "<C-j>", ":m .+1<CR>==")
 
 -- close window
-keymap.set("n", "<Leader>w", ":q<Return>", opts)
+keymap.set("n", "<Leader>c", ":q!<Return>", opts)
 keymap.set("n", "<Leader>x", ":x<Return>", opts)
+keymap.set("n", "<leader>Q", function()
+	vim.cmd("only")
+	vim.cmd("q")
+end, { desc = "Close all windows" })
 
 -- Save file with Ctrl+s
 keymap.set("n", "<C-s>", ":w<CR>", opts)
