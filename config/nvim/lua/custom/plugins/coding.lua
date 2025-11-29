@@ -81,8 +81,8 @@ return {
 			vim.api.nvim_create_autocmd("BufEnter", {
 				pattern = "copilot-chat",
 				callback = function()
-					vim.opt_local.relativenumber = false
 					vim.opt_local.number = false
+					vim.opt_local.relativenumber = false
 				end,
 			})
 
@@ -167,7 +167,6 @@ return {
 		},
 	},
 	{
-		-- TODO: Add split when opening file
 		"folke/snacks.nvim",
 		opts = {
 			explorer = {
@@ -178,7 +177,9 @@ return {
 			picker = {
 				sources = {
 					explorer = {
-						layout = { preset = "sidebar", preview = false },
+						git_status = true,
+						git_untracked = true,
+						layout = { preset = "sidebar", preview = true },
 					},
 				},
 			},

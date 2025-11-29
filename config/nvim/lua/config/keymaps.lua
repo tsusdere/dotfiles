@@ -124,3 +124,7 @@ keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
 keymap.set("n", "<leader>E", function()
 	Snacks.explorer({ cwd = vim.fn.getcwd() })
 end)
+
+keymap.set("n", "<leader>e", function()
+	Snacks.explorer.open({ auto_close = true })
+end)
