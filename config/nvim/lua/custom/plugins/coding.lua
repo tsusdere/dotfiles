@@ -179,6 +179,7 @@ return {
 					explorer = {
 						git_status = true,
 						git_untracked = true,
+						auto_close = true,
 						layout = { preset = "sidebar", preview = true },
 					},
 				},
