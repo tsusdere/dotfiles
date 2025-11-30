@@ -128,3 +128,6 @@ end)
 keymap.set("n", "<leader>e", function()
 	Snacks.explorer.open({ auto_close = true })
 end)
+
+-- open terminal on vspli
+keymap.set("n", "<leader>T", ":vsplit | terminal<CR>i", opts)
