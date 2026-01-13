@@ -120,6 +120,9 @@ end, { desc = "Close all windows" })
 keymap.set("n", "<C-s>", ":w<CR>", opts)
 keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
 
+-- Open the :Explorer
+keymap.set("n", "<leader>F", ":Ex<CR>", opts)
+
 -- explorer
 keymap.set("n", "<leader>E", function()
 	Snacks.explorer({ cwd = vim.fn.getcwd() })
