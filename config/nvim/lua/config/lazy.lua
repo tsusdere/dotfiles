@@ -537,7 +537,7 @@ require("lazy").setup({
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("ayu")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 
@@ -604,6 +604,14 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				"rust",
+				"python",
+				"javascript",
+				"typescript",
+				"json",
+				"css",
+				"yaml",
+				"toml",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

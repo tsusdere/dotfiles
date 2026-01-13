@@ -90,8 +90,8 @@ keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
 -- Split window
-keymap.set("n", "fs", ":split<Return>", opts)
-keymap.set("n", "fv", ":vsplit<Return>", opts)
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- Move window
 keymap.set("n", "fh", "<C-w>h")
@@ -130,4 +130,10 @@ keymap.set("n", "<leader>e", function()
 end)
 
 -- open terminal on vspli
-keymap.set("n", "<leader>T", ":vsplit | terminal<CR>i", opts)
+keymap.set("n", "<leader>Ts", ":split | terminal<CR>i", opts)
+
+-- open terminal in new tab
+keymap.set("n", "<leader>TT", ":tabnew | terminal<CR>i", opts)
+
+-- exit insert mode in teminal
+keymap.set("t", "<C-q>", "<C-\\><C-n>", opts)

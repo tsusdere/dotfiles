@@ -15,6 +15,14 @@ return {
 		},
 	},
 	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
+	{ "nvim-mini/mini.pairs", version = "*" },
+	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
 		cmd = "CopilotChat",
