@@ -134,6 +134,7 @@ end)
 
 -- open terminal on vspli
 keymap.set("n", "<leader>Ts", ":split | terminal<CR>i", opts)
+keymap.set("n", "<leader>Tv", ":vsplit | terminal<CR>i", opts)
 
 -- open terminal in new tab
 keymap.set("n", "<leader>TT", ":tabnew | terminal<CR>i", opts)
