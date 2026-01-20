@@ -12,6 +12,18 @@ return {
     version = "^6", -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    "williamboman/mason.nvim",
+    "mfussenegger/nvim-dap",
+    "jay-babu/mason-nvim-dap.nvim",
+    cmd = { "DapInstall", "DapUninstall" },
+    opts = {
+      ensure_installed = { "delve" },
+    },
+    config = function()
+      require "configs.dap"
+    end,
+  },
   { "nvim-neotest/nvim-nio" },
   {
     "nvim-neotest/neotest",
