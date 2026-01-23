@@ -20,6 +20,7 @@ return {
       "nvim-neotest/nvim-nio",
     },
 
+    lazy = false,
     config = function()
       require "configs.dap"
     end,
