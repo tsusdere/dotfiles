@@ -13,13 +13,13 @@ return {
     lazy = false, -- This plugin is already lazy
   },
   {
-    "williamboman/mason.nvim",
     "mfussenegger/nvim-dap",
-    "jay-babu/mason-nvim-dap.nvim",
-    cmd = { "DapInstall", "DapUninstall" },
-    opts = {
-      ensure_installed = { "delve" },
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "leoluz/nvim-dap-go",
+      "nvim-neotest/nvim-nio",
     },
+
     config = function()
       require "configs.dap"
     end,

@@ -15,8 +15,8 @@ map("n", "<leader>sv", ":vsplit<Return>")
 map("n", "<leader>q", ":q<Return>")
 
 -- help move line
-map("n", "<C-k>", ":m .-2<CR>==")
-map("n", "<C-j>", ":m .+1<CR>==")
+map("n", "<C-q>", ":m .-2<CR>==")
+map("n", "<C-a>", ":m .+1<CR>==")
 
 -- quick way out of noh
 map("n", "<Leader>n", "<cmd>nohlsearch<CR>")
