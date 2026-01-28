@@ -295,10 +295,16 @@ return {
       "antoinemadec/FixCursorHold.nvim",
 
       -- adapters
-      "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-jest",
       "nvim-neotest/neotest-plenary",
+      {
+        "fredrikaverpil/neotest-golang",
+        version = "*", -- Optional, but recommended; track releases
+        build = function()
+          vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+        end,
+      },
     },
     config = function()
       require "configs.neotest"

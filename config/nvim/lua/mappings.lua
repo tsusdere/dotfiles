@@ -8,8 +8,8 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- split window
-map("n", "<leader>ss", ":split<Return>" )
-map("n", "<leader>sv", ":vsplit<Return>")
+map("n", "wh", ":split<Return>" )
+map("n", "wv", ":vsplit<Return>")
 
 -- close a window
 map("n", "<leader>q", ":q<Return>")
@@ -22,6 +22,12 @@ map("n", "<C-a>", ":m .+1<CR>==")
 map("n", "<Leader>n", "<cmd>nohlsearch<CR>")
 
 -- save file
-map("n", "<C-s>", ":w<CR>")
-map("i", "<C-s>", "<Esc>:w<CR>")
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map({ "n", "i", "v" }, "ZZ", "<Esc> <cmd> w <cr>")
+
+-- force quit all windows
+map("n", "<leader>Q", "<cmd>qa!<cr>", { desc = "force quit all" })
+
+-- toggleable
+map({ "n", "t" }, "<C-;>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "terminal toggleable horizontal term" })
