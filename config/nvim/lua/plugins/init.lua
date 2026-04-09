@@ -8,6 +8,33 @@ return {
     end,
   },
   {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      flavour = "mocha",
+      transparent_background = true,
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        harpoon = true,
+        indent_blankline = { enabled = true },
+        mason = true,
+        native_lsp = { enabled = true },
+        neotest = true,
+        nvimtree = true,
+        telescope = { enabled = true },
+        treesitter = true,
+        which_key = true,
+      },
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme "catppuccin-mocha"
+    end,
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     build = ":Copilot auth",
@@ -31,78 +58,45 @@ return {
     },
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    cmd = "CopilotChat",
-    opts = function()
-      local user = vim.env.USER or "User"
-      user = user:sub(1, 1):upper() .. user:sub(2)
-      return {
-        auto_insert_mode = true,
-        headers = {
-          user = "  " .. user .. " ",
-          assistant = "  Copilot ",
-          tool = "󰊳  Tool ",
-        },
-        window = {
-          width = 0.4,
-        },
-      }
-    end,
-    keys = {
-      { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
-      { "<leader>a", "", desc = "+ai", mode = { "n", "x" } },
-      {
-        "<leader>aa",
-        function()
-          return require("CopilotChat").toggle()
-        end,
-        desc = "Toggle (CopilotChat)",
-        mode = { "n", "x" },
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    opts = {
+      menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
       },
-      {
-        "<leader>ax",
-        function()
-          return require("CopilotChat").reset()
-        end,
-        desc = "Clear (CopilotChat)",
-        mode = { "n", "x" },
-      },
-      {
-        "<leader>aq",
-        function()
-          vim.ui.input({
-            prompt = "Quick Chat: ",
-          }, function(input)
-            if input ~= "" then
-              require("CopilotChat").ask(input)
-            end
-          end)
-        end,
-        desc = "Quick Chat (CopilotChat)",
-        mode = { "n", "x" },
-      },
-      {
-        "<leader>ap",
-        function()
-          require("CopilotChat").select_prompt()
-        end,
-        desc = "Prompt Actions (CopilotChat)",
-        mode = { "n", "x" },
+      settings = {
+        save_on_toggle = true,
       },
     },
-    config = function(_, opts)
-      local chat = require "CopilotChat"
+    keys = function()
+      local keys = {
+        {
+          "<leader>H",
+          function()
+            require("harpoon"):list():add()
+          end,
+          desc = "Harpoon File",
+        },
+        {
+          "<leader>A",
+          function()
+            local harpoon = require "harpoon"
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = "Harpoon Quick Menu",
+        },
+      }
 
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "copilot-chat",
-        callback = function()
-          vim.opt_local.relativenumber = false
-          vim.opt_local.number = false
-        end,
-      })
-
-      chat.setup(opts)
+      for i = 1, 9 do
+        table.insert(keys, {
+          "<leader>" .. i,
+          function()
+            require("harpoon"):list():select(i)
+          end,
+          desc = "Harpoon to File " .. i,
+        })
+      end
+      return keys
     end,
   },
   {

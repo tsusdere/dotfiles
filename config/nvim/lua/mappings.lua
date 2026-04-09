@@ -24,7 +24,7 @@ map("n", "<Leader>n", "<cmd>nohlsearch<CR>")
 -- save file
 map({ "n", "i", "v" }, "ZZ", "<Esc> <cmd> w <cr>")
 
--- force quit all windows
+
 map("n", "<leader>Q", "<cmd>qa!<cr>", { desc = "force quit all" })
 
 -- toggleable
