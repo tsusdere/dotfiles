@@ -42,20 +42,23 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 #Font
-font-family = "JetBrains Mono Nerd Font"
-font-size = "12"
+font-family = "Fira Code"
+font-size = "15"
 
 #Terminal settings
 term = "xterm-256color"
+shell-integration-features = no-cursor, sudo, no-title
 
 # window
-window-height=50
-window-width=125
+window-padding-balance = true
+window-colorspace = "display-p3"
+macos-option-as-alt = true
+macos-titlebar-style = transparent
 
+theme = Catppuccin Mocha
 #Visuals
-theme = iTerm2 Default
-background-opacity = 0.8
-background-blur-radius = 10
+background-opacity = 1
+background-blur-radius = 40
 selection-invert-fg-bg = true
 bold-is-bright = true
 minimum-contrast = 2
@@ -66,3 +69,6 @@ cursor-style-blink = true
 cursor-invert-fg-bg = true
 cursor-opacity = .8
 shell-integration-features = no-cursor
+mouse-hide-while-typing = true
+
+confirm-close-surface = false
