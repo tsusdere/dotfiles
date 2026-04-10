@@ -58,11 +58,10 @@ return {
         "<tab>",
         function()
           if not require("sidekick").nes_jump_or_apply() then
-            return "<Tab>"
+            require("nvchad.tabufline").next()
           end
         end,
-        expr = true,
-        desc = "Goto/Apply Next Edit Suggestion",
+        desc = "Goto/Apply Next Edit Suggestion or Next Buffer",
       },
       {
         "<c-.>",
