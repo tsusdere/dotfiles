@@ -55,7 +55,7 @@ window-colorspace = "display-p3"
 macos-option-as-alt = true
 macos-titlebar-style = transparent
 
-theme = Catppuccin Mocha
+theme = TokyoNight Night
 #Visuals
 background-opacity = 1
 background-blur-radius = 40

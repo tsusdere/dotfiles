@@ -166,7 +166,7 @@ keybinds clear-defaults=true {
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         // bind "Ctrl q" { Quit; }
-        bind "Alt D" { Quit; }
+        bind "Ctrl d" { Quit; }
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
@@ -312,7 +312,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "catppuccin-mocha"
+theme "tokyonight-night"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -585,119 +585,119 @@ default_mode "normal"
 // client_async_worker_tasks 4
 
 themes {
-    catppuccin-mocha {
+    tokyonight-night {
         text_unselected {
-            base 205 214 244
-            background 24 24 37
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 192 202 245
+            background 26 27 38
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         text_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 192 202 245
+            background 40 52 87
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         ribbon_selected {
-            base 24 24 37
-            background 166 227 161
-            emphasis_0 243 139 168
-            emphasis_1 250 179 135
-            emphasis_2 245 194 231
-            emphasis_3 137 180 250
+            base 26 27 38
+            background 158 206 106
+            emphasis_0 247 118 142
+            emphasis_1 255 158 100
+            emphasis_2 187 154 247
+            emphasis_3 122 162 247
         }
         ribbon_unselected {
-            base 24 24 37
-            background 205 214 244
-            emphasis_0 243 139 168
-            emphasis_1 205 214 244
-            emphasis_2 137 180 250
-            emphasis_3 245 194 231
+            base 26 27 38
+            background 192 202 245
+            emphasis_0 247 118 142
+            emphasis_1 192 202 245
+            emphasis_2 122 162 247
+            emphasis_3 187 154 247
         }
         table_title {
-            base 166 227 161
+            base 158 206 106
             background 0
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         table_cell_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 192 202 245
+            background 40 52 87
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         table_cell_unselected {
-            base 205 214 244
-            background 24 24 37
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 192 202 245
+            background 26 27 38
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         list_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 192 202 245
+            background 40 52 87
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         list_unselected {
-            base 205 214 244
-            background 24 24 37
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 192 202 245
+            background 26 27 38
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 158 206 106
+            emphasis_3 187 154 247
         }
         frame_selected {
-            base 166 227 161
+            base 158 206 106
             background 0
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 245 194 231
+            emphasis_0 255 158 100
+            emphasis_1 125 207 255
+            emphasis_2 187 154 247
             emphasis_3 0
         }
         frame_highlight {
-            base 250 179 135
+            base 255 158 100
             background 0
-            emphasis_0 245 194 231
-            emphasis_1 250 179 135
-            emphasis_2 250 179 135
-            emphasis_3 250 179 135
+            emphasis_0 187 154 247
+            emphasis_1 255 158 100
+            emphasis_2 255 158 100
+            emphasis_3 255 158 100
         }
         exit_code_success {
-            base 166 227 161
+            base 158 206 106
             background 0
-            emphasis_0 137 220 235
-            emphasis_1 24 24 37
-            emphasis_2 245 194 231
-            emphasis_3 137 180 250
+            emphasis_0 125 207 255
+            emphasis_1 26 27 38
+            emphasis_2 187 154 247
+            emphasis_3 122 162 247
         }
         exit_code_error {
-            base 243 139 168
+            base 247 118 142
             background 0
-            emphasis_0 249 226 175
+            emphasis_0 224 175 104
             emphasis_1 0
             emphasis_2 0
             emphasis_3 0
         }
         multiplayer_user_colors {
-            player_1 245 194 231
-            player_2 137 180 250
+            player_1 187 154 247
+            player_2 122 162 247
             player_3 0
-            player_4 249 226 175
-            player_5 137 220 235
+            player_4 224 175 104
+            player_5 125 207 255
             player_6 0
-            player_7 243 139 168
+            player_7 247 118 142
             player_8 0
             player_9 0
             player_10 0
