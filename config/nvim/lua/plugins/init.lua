@@ -10,29 +10,34 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    enabled = false,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "mocha",
-      transparent_background = true,
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        harpoon = true,
-        indent_blankline = { enabled = false },
-        mason = true,
-        native_lsp = { enabled = true },
-        neotest = true,
-        nvimtree = true,
-        telescope = { enabled = true },
-        treesitter = true,
-        which_key = true,
+      transparent_mode = true,
+      contrast = "hard",
+      overrides = {
+        ColorColumn = { bg = "#3c3836" },
       },
     },
     config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme "catppuccin-mocha"
+      require("gruvbox").setup(opts)
+      vim.cmd.colorscheme "gruvbox"
     end,
+  },
+  {
+    "esmuellert/codediff.nvim",
+    cmd = { "CodeDiff", "CodeDiffHistory", "CodeDiffConflicts" },
+    keys = {
+      { "<leader>Dd", "<cmd>CodeDiff<cr>", desc = "CodeDiff (git explorer)" },
+      { "<leader>Dh", "<cmd>CodeDiffHistory<cr>", desc = "CodeDiff git history" },
+      { "<leader>Dc", "<cmd>CodeDiffConflicts<cr>", desc = "CodeDiff merge conflicts" },
+      { "<leader>Dp", "<cmd>CodeDiff HEAD~1<cr>", desc = "CodeDiff vs previous commit" },
+    },
+    opts = {},
   },
   {
     "folke/sidekick.nvim",
@@ -508,8 +513,8 @@ return {
       hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
 
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "IblIndent", { fg = "#313244" })
-        vim.api.nvim_set_hl(0, "IblScopeChar", { fg = "#cba6f7" })
+        vim.api.nvim_set_hl(0, "IblIndent", { fg = "#3c3836" })
+        vim.api.nvim_set_hl(0, "IblScopeChar", { fg = "#d79921" })
       end)
 
       require("ibl").setup(opts)
