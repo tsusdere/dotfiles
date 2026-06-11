@@ -13,19 +13,16 @@ return {
     enabled = false,
   },
   {
-    "ellisonleao/gruvbox.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      transparent_mode = true,
-      contrast = "hard",
-      overrides = {
-        ColorColumn = { bg = "#3c3836" },
-      },
+      style = "night",
+      transparent = true,
     },
     config = function(_, opts)
-      require("gruvbox").setup(opts)
-      vim.cmd.colorscheme "gruvbox"
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme "tokyonight"
     end,
   },
   {
@@ -513,8 +510,8 @@ return {
       hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
 
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "IblIndent", { fg = "#3c3836" })
-        vim.api.nvim_set_hl(0, "IblScopeChar", { fg = "#d79921" })
+        vim.api.nvim_set_hl(0, "IblIndent", { fg = "#3b4261" })
+        vim.api.nvim_set_hl(0, "IblScopeChar", { fg = "#7aa2f7" })
       end)
 
       require("ibl").setup(opts)
@@ -524,10 +521,44 @@ return {
   -- file managing , picker etc
   {
     "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
     opts = function()
       return require "nvchad.configs.nvimtree"
     end,
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false,
+    config = function()
+      require("aerial").setup({
+        layout = {
+          default_direction = "right",
+          min_width = 30,
+        },
+        open_automatic = function(bufnr)
+          -- Only auto-open in the first/main window, not splits
+          local wins = vim.api.nvim_tabpage_list_wins(0)
+          local non_special = 0
+          for _, win in ipairs(wins) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            local ft = vim.bo[buf].filetype
+            if ft ~= "NvimTree" and ft ~= "aerial" and ft ~= "" then
+              non_special = non_special + 1
+            end
+          end
+          return non_special <= 1
+        end,
+      })
+    end,
+    keys = {
+      { "<leader>o", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
+      { "<leader>O", "<cmd>AerialNavToggle<cr>", desc = "Aerial Nav" },
+    },
   },
 
   {
