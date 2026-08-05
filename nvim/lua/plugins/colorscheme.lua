@@ -1,9 +1,16 @@
 return {
-  { "craftzdog/solarized-osaka.nvim", lazy = true, priority = 1000, opts = {} },
+  {
+    "Aejkatappaja/cendre",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      background = "hard",
+    },
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "solarized-osaka",
+      colorscheme = "cendre",
     },
   },
 }
