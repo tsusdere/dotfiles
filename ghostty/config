@@ -1,6 +1,6 @@
 # This is the configuration file for Ghostty.
 #
-# Thi template file has been automatically created at the following
+# This template file has been automatically created at the following
 # path since Ghostty couldn't find any existing config files on your system:
 #
 #   /home/tsusdere/.config/ghostty/config
@@ -42,8 +42,8 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 #Font
-font-family = "FiraCode"
-font-size = "15"
+font-family = "PlemolJP Console NF"
+#font-size = "14"
 
 #Terminal settings
 term = "xterm-256color"
@@ -55,10 +55,12 @@ window-colorspace = "display-p3"
 macos-option-as-alt = true
 macos-titlebar-style = transparent
 
-theme = Gruvbox Material Dark
+theme = Solarized Dark Patched
+
+background-opacity = 0.9
+background-blur-radius = 20
+background = #031219
 #Visuals
-background-opacity = 1
-background-blur-radius = 40
 selection-invert-fg-bg = true
 bold-is-bright = true
 minimum-contrast = 2
