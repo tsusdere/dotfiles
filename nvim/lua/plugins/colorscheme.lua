@@ -1,14 +1,21 @@
 return {
   {
-    "craftzdog/solarized-osaka.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      style = "storm",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "solarized-osaka",
+      colorscheme = "tokyonight-storm",
     },
   },
 }
