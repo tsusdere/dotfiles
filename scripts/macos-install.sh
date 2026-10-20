@@ -1,21 +1,29 @@
 #!/bin/bash
 
 output() {
-  printf "$1"
+  printf '%b' "$1"
 }
 
 all_done() {
-  if [[ "$1" ]]; then
-    printf "$1"
+  if [[ -n "${1:-}" ]]; then
+    printf '%b' "$1"
   else
     printf "✅\n"
   fi
 }
 
 brew_bundle() {
+  local repo_dir
+  repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || return
+
+  if [[ ! -f "$repo_dir/Brewfile" ]]; then
+    output "No Brewfile in this checkout; skipping Homebrew bundle.\n"
+    return
+  fi
+
   output "Brew bundling...\n"
 
-  brew bundle
+  brew bundle --file="$repo_dir/Brewfile" || return
 
   all_done "\n\n"
 }
@@ -41,19 +49,44 @@ install_rdm() {
   all_done
 }
 
+link_dotfile() {
+  local source="$1" destination="$2" backup suffix=0
+
+  if [[ ! -e "$source" ]]; then
+    printf 'Missing dotfile source: %s\n' "$source" >&2
+    return 1
+  fi
+
+  if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then
+    return
+  fi
+
+  mkdir -p "$(dirname "$destination")" || return
+  if [[ -e "$destination" || -L "$destination" ]]; then
+    backup="${destination}.backup-$(date +%Y%m%d-%H%M%S)"
+    while [[ -e "$backup" || -L "$backup" ]]; do
+      suffix=$((suffix + 1))
+      backup="${destination}.backup-$(date +%Y%m%d-%H%M%S)-${suffix}"
+    done
+    mv "$destination" "$backup" || return
+    printf 'Backed up %s to %s\n' "$destination" "$backup"
+  fi
+
+  ln -s "$source" "$destination"
+}
+
 install_dotfiles() {
   output "Installing dotfiles..."
 
   local repo_dir
   repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || return
 
-  mkdir -p "$HOME/.config/tmux/scripts" || return
+  link_dotfile "$repo_dir/zshrc" "$HOME/.zshrc" || return
   local config
-  for config in "$repo_dir"/.config/tmux/*.conf; do
-    ln -snf "$config" "$HOME/.config/tmux/$(basename "$config")" || return
+  for config in nvim tmux ghostty zellij; do
+    link_dotfile "$repo_dir/.config/$config" "$HOME/.config/$config" || return
   done
-  ln -snf "$repo_dir/.config/tmux/scripts/layout.sh" "$HOME/.config/tmux/scripts/layout.sh" || return
-  ln -snf "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf" || return
+  link_dotfile "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf" || return
 
   all_done
 }
@@ -84,7 +117,7 @@ install_npm_packages() {
 initialize_neovim() {
   output "Initializing neovim..."
 
-  HEADLESS_NEOVIM=1 /opt/homebrew/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+  HEADLESS_NEOVIM=1 nvim --headless '+Lazy! sync' +qa || return
 
   all_done
 }
@@ -92,7 +125,16 @@ initialize_neovim() {
 initialize_tmux() {
   output "Initializing tmux..."
 
-  tmux new -d '~/.tmux/plugins/tpm/scripts/install_plugins.sh'
+  local session="dotfiles-install-$$" status=0
+  if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    mkdir -p "$HOME/.tmux/plugins" || return
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm" || return
+  fi
+  tmux new-session -d -s "$session" || return
+  tmux source-file "$HOME/.tmux.conf" &&
+    "$HOME/.tmux/plugins/tpm/bin/install_plugins" || status=$?
+  tmux kill-session -t "$session" || return
+  [[ "$status" -eq 0 ]] || return "$status"
 
   all_done
 }
@@ -140,17 +182,24 @@ teardown() {
   all_done
 }
 
-brew_bundle
+main() {
+  install_dotfiles
 
-install_dotfiles
+  brew_bundle
 
-install_xcode_select
-install_rdm
-install_npm_packages
-install_gh_extensions
-install_fzf
+  install_xcode_select
+  install_rdm
+  install_npm_packages
+  install_gh_extensions
+  install_fzf
 
-initialize_neovim
-initialize_tmux
+  initialize_neovim
+  initialize_tmux
 
-teardown
+  teardown
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  set -e
+  main "$@"
+fi
