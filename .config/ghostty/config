@@ -45,30 +45,19 @@ font-family = "PlemolJP Console NF"
 
 #Terminal settings
 term = "xterm-256color"
-shell-integration-features = no-cursor, sudo, no-title
 
 # window
-window-padding-balance = true
-window-colorspace = "display-p3"
 macos-option-as-alt = true
 macos-titlebar-style = transparent
 
-theme = Solarized Dark Patched
+theme = TokyoNight
 
-background-opacity = 0.9
+background-opacity = 1
 background-blur-radius = 20
-background = #031219
 #Visuals
-selection-invert-fg-bg = true
-bold-is-bright = true
-minimum-contrast = 2
 
 #Cursor
 cursor-style = block
 cursor-style-blink = true
-cursor-invert-fg-bg = true
-cursor-opacity = .8
-shell-integration-features = no-cursor
 mouse-hide-while-typing = true
-
 confirm-close-surface = false
