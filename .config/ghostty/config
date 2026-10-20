@@ -3,8 +3,6 @@
 # This template file has been automatically created at the following
 # path since Ghostty couldn't find any existing config files on your system:
 #
-#   /home/tsusdere/.config/ghostty/config
-#
 # The template does not set any default options, since Ghostty ships
 # with sensible defaults for all options. Users should only need to set
 # options that they want to change from the default.
@@ -55,10 +53,11 @@ window-colorspace = "display-p3"
 macos-option-as-alt = true
 macos-titlebar-style = transparent
 
-theme = TokyoNight Night
+theme = Solarized Dark Patched
 
-background-opacity = 0.98
+background-opacity = 0.9
 background-blur-radius = 20
+background = #031219
 #Visuals
 selection-invert-fg-bg = true
 bold-is-bright = true
