@@ -55,11 +55,10 @@ window-colorspace = "display-p3"
 macos-option-as-alt = true
 macos-titlebar-style = transparent
 
-theme = TokyoNight
+theme = TokyoNight Night
 
-background-opacity = 0.9
+background-opacity = 0.98
 background-blur-radius = 20
-background = #050E26
 #Visuals
 selection-invert-fg-bg = true
 bold-is-bright = true
