@@ -58,12 +58,19 @@ brew install lazygit
 
 dotfiles=(
   config/nvim
-  tmux.conf
   zshrc
 )
 for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
 done
+
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || exit 1
+mkdir -p "$HOME/.config/tmux/scripts" || exit 1
+for config in "$repo_dir"/.config/tmux/*.conf; do
+  ln -snf "$config" "$HOME/.config/tmux/$(basename "$config")" || exit 1
+done
+ln -snf "$repo_dir/.config/tmux/scripts/layout.sh" "$HOME/.config/tmux/scripts/layout.sh" || exit 1
+ln -snf "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf" || exit 1
 
 npm_packages_needed=(
   bash-language-server

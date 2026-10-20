@@ -44,13 +44,16 @@ install_rdm() {
 install_dotfiles() {
   output "Installing dotfiles..."
 
-  dotfiles=(
-    tmux.conf
-  )
+  local repo_dir
+  repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || return
 
-  for val in "${dotfiles[@]}"; do
-    ln -snf $(pwd)/$val $HOME/.$val
+  mkdir -p "$HOME/.config/tmux/scripts" || return
+  local config
+  for config in "$repo_dir"/.config/tmux/*.conf; do
+    ln -snf "$config" "$HOME/.config/tmux/$(basename "$config")" || return
   done
+  ln -snf "$repo_dir/.config/tmux/scripts/layout.sh" "$HOME/.config/tmux/scripts/layout.sh" || return
+  ln -snf "$HOME/.config/tmux/tmux.conf" "$HOME/.tmux.conf" || return
 
   all_done
 }
