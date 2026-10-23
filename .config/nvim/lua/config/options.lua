@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.relativenumber = true
+vim.opt.colorcolumn = "80,120"
