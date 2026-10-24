@@ -50,7 +50,7 @@ term = "xterm-256color"
 macos-option-as-alt = true
 macos-titlebar-style = transparent
 
-theme = TokyoNight
+theme = Gruvbox Dark
 
 background-opacity = 1
 background-blur-radius = 20

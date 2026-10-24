@@ -1,21 +1,22 @@
 return {
   {
-    "folke/tokyonight.nvim",
+    "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
+    init = function()
+      vim.o.background = "dark"
+    end,
     opts = {
-      style = "night",
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
+      transparent_mode = true,
+      overrides = {
+        NormalFloat = { bg = "NONE" },
       },
     },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "gruvbox",
     },
   },
 }
