@@ -1,6 +1,37 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
+vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.colorcolumn = "80,120"
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+vim.opt.signcolumn = "yes"
+vim.opt.laststatus = 3
+vim.opt.showmode = false
+vim.opt.showtabline = 1
+vim.opt.winborder = "rounded"
+vim.opt.wrap = false
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 8
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.mouse = ""
+vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = true
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 400
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.pumheight = 10
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99

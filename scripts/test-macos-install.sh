@@ -51,9 +51,18 @@ if link_dotfile "$repo_dir/zshrc" "$test_dir/not-a-directory/file/child"; then
 fi
 
 nvim() {
-  [[ "$*" == '--headless +Lazy! sync +qa' ]]
+  [[ "${HEADLESS_NEOVIM:-}" == 1 ]]
+  [[ "$*" == '--headless +lua if vim.v.errmsg ~= "" then vim.cmd.cquit() end +DotfilesInstall +qa' ]]
 }
 initialize_neovim
+
+nvim() {
+  return 1
+}
+if initialize_neovim; then
+  printf 'Neovim initialization failure unexpectedly succeeded\n' >&2
+  exit 1
+fi
 
 tmux_calls="$test_dir/tmux-calls"
 tmux() {
@@ -83,6 +92,8 @@ fi
 export HOME="$test_dir/fresh-home"
 install_dotfiles
 [[ -f "$HOME/.config/nvim/init.lua" ]]
+[[ -f "$HOME/.config/ghostty/themes/Solarized Dark - Vivid" ]]
+[[ -f "$HOME/.config/tmux/solarized-osaka.conf" ]]
 [[ -f "$HOME/.config/tmux/scripts/layout.sh" ]]
 [[ -z "$(find "$HOME" -name '*.backup-*')" ]]
 

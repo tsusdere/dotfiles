@@ -46,9 +46,15 @@ rm -rf /usr/local/.nodenv/shims/npm
 curl -L https://bit.ly/n-install | bash -s -- -y
 
 # install latest neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-sudo chmod u+x nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
+case "$(uname -m)" in
+  x86_64) nvim_arch=x86_64 ;;
+  aarch64|arm64) nvim_arch=arm64 ;;
+  *) printf 'Unsupported Neovim architecture: %s\n' "$(uname -m)" >&2; exit 1 ;;
+esac
+curl -fL -o nvim.appimage \
+  "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$nvim_arch.appimage" || exit 1
+sudo chmod u+x nvim.appimage || exit 1
+sudo mv nvim.appimage /usr/local/bin/nvim || exit 1
 
 # install brew and lazygit
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -56,15 +62,22 @@ sudo mv nvim.appimage /usr/local/bin/nvim
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install lazygit
 
-dotfiles=(
-  config/nvim
-  zshrc
-)
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || exit 1
+mkdir -p "$HOME/.config" || exit 1
+if [[ -L "$HOME/.config/nvim" && "$(readlink "$HOME/.config/nvim")" == "$repo_dir/.config/nvim" ]]; then
+  :
+else
+  if [[ -e "$HOME/.config/nvim" || -L "$HOME/.config/nvim" ]]; then
+    mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup-$(date +%Y%m%d-%H%M%S)-$$" || exit 1
+  fi
+  ln -s "$repo_dir/.config/nvim" "$HOME/.config/nvim" || exit 1
+fi
+
+dotfiles=(zshrc)
 for val in "${dotfiles[@]}"; do
   ln -snf "$(pwd)/$val" "$HOME/.$val"
 done
 
-repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)" || exit 1
 mkdir -p "$HOME/.config/tmux/scripts" || exit 1
 for config in "$repo_dir"/.config/tmux/*.conf; do
   ln -snf "$config" "$HOME/.config/tmux/$(basename "$config")" || exit 1
@@ -84,7 +97,8 @@ npm_packages_needed=(
 )
 sudo /usr/local/bin/npm install -g "${npm_packages_needed[@]}"
 
-HEADLESS_NEOVIM=1 /usr/local/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+HEADLESS_NEOVIM=1 /usr/local/bin/nvim --headless \
+  '+lua if vim.v.errmsg ~= "" then vim.cmd.cquit() end' '+DotfilesInstall' +qa || exit 1
 
 # tmux new -d # open a detached session to install TPM
 # tmux new -d "$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh" # open another detached session and install plugins

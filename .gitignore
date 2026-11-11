@@ -79,7 +79,6 @@ packer_compiled.lua
 nvim.old
 nvim.lazy
 .luarc.json
-nvim-pack-lock.json
 
 # Lazygit
 .config/lazygit/state.yml

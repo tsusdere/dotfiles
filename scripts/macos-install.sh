@@ -117,7 +117,8 @@ install_npm_packages() {
 initialize_neovim() {
   output "Initializing neovim..."
 
-  HEADLESS_NEOVIM=1 nvim --headless '+Lazy! sync' +qa || return
+  HEADLESS_NEOVIM=1 nvim --headless \
+    '+lua if vim.v.errmsg ~= "" then vim.cmd.cquit() end' '+DotfilesInstall' +qa || return
 
   all_done
 }
